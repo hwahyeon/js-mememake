@@ -1,3 +1,5 @@
+const saveBtn = document.getElementById("save");
+const textInput = document.getElementById("text");
 const fileInput = document.getElementById("file");
 const modeBtn = document.getElementById("mode-btn");
 const clearBtn = document.getElementById("clear-btn");
@@ -12,9 +14,11 @@ const ctx = canvas.getContext("2d");
 
 const CANVAS_WIDTH = 800;
 const CANVAS_HEIGHT = 800;
+
 canvas.width = CANVAS_WIDTH;
 canvas.height = CANVAS_HEIGHT;
 ctx.lineWidth = lineWidth.value;
+ctx.lineCap = "round"
 let isPainting = false;
 let isFilling = false;
 
@@ -91,7 +95,27 @@ function onFileChange(event){
     }
 }
 
+function onDoubleClick(event){
+    ctx.save(); // save current state color, style everything
+    const text = textInput.value;
+    if (text !== "") {
+        ctx.lineWidth = 1;
+        ctx.font = "48px serif";
+        ctx.fillText(text, event.offsetX, event.offsetY); // options strokeText, fillText
+        ctx.restore(); // restore
+    }
+}
 
+function onSaveClick() {
+    const url = canvas.toDataURL();
+    const a = document.createElement("a")
+    a.href = url
+    a.download = "myDrawing.png"
+    a.click();
+}
+
+
+canvas.addEventListener("dblclick", onDoubleClick); //dbclick = mousedown, mouseup - Repeat quickly
 canvas.addEventListener("mousemove", onMove);
 canvas.addEventListener("mousedown", startPainting);
 canvas.addEventListener("mouseup", cancelPainting); //another way : document.addEventListener("mouseup", cancelPainting);
@@ -106,3 +130,4 @@ modeBtn.addEventListener("click", onModeClick);
 clearBtn.addEventListener("click", onClearClick);
 eraserBtn.addEventListener("click", onEraserClick);
 fileInput.addEventListener("change", onFileChange);
+saveBtn.addEventListener("click", onSaveClick);
