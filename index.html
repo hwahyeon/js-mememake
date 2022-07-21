@@ -90,6 +90,22 @@
                 placeholder="Write and then double click"
                 id="text"
             />
+            <input
+                id="fontsize"
+                type="range"
+                min="20"
+                max="100"
+                value="45"
+                step="5"
+            />
+            <select name="fonts" id="sel-font">
+                <option value="sans-serif">sans-serif</option>
+                <option value="cursive">cursive</option>
+                <option value="monospace">monospace</option>
+                <option value="fantasy">fantasy</option>
+                <option value="Malgun Gothic">맑은 고딕</option>
+            </select>
+            <button id="fontmode-btn">Fill</button>
             <button id="save">Save</button>
         </div>
         <script src="app.js"></script>

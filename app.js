@@ -1,3 +1,6 @@
+const fontSize = document.getElementById("fontsize");
+const fontmodeBtn = document.getElementById("fontmode-btn")
+const fontSelect = document.getElementById("sel-font");
 const saveBtn = document.getElementById("save");
 const textInput = document.getElementById("text");
 const fileInput = document.getElementById("file");
@@ -19,8 +22,11 @@ canvas.width = CANVAS_WIDTH;
 canvas.height = CANVAS_HEIGHT;
 ctx.lineWidth = lineWidth.value;
 ctx.lineCap = "round"
+ctx.font = `${fontSize.value}px ${fontSelect.options[fontSelect.selectedIndex].value}`;
+
 let isPainting = false;
 let isFilling = false;
+let fontFilling = false;
 
 function onMove(event){
     if (isPainting){
@@ -95,16 +101,37 @@ function onFileChange(event){
     }
 }
 
+function onFontSelector(){
+    ctx.font = `${fontSize.value}px ${fontSelect.options[fontSelect.selectedIndex].value}`;
+}
+
+
 function onDoubleClick(event){
     ctx.save(); // save current state color, style everything
     const text = textInput.value;
     if (text !== "") {
-        ctx.lineWidth = 1;
-        ctx.font = "48px serif";
-        ctx.fillText(text, event.offsetX, event.offsetY); // options strokeText, fillText
-        ctx.restore(); // restore
+        if (fontFilling){
+            ctx.lineWidth = 1;
+            ctx.fillText(text, event.offsetX, event.offsetY); // options strokeText, fillText
+            ctx.restore(); // restore
+        } else {
+            ctx.lineWidth = 1;
+            ctx.strokeText(text, event.offsetX, event.offsetY);
+            ctx.restore();
+        }
     }
 }
+
+function onFontModeChange() {
+    if (fontFilling){
+        fontFilling = false
+        fontmodeBtn.innerText = "Fill"
+    } else {
+        fontFilling = true
+        fontmodeBtn.innerText = "Draw"
+    }
+}
+
 
 function onSaveClick() {
     const url = canvas.toDataURL();
@@ -115,6 +142,7 @@ function onSaveClick() {
 }
 
 
+fontSize.addEventListener("change", onFontSelector)
 canvas.addEventListener("dblclick", onDoubleClick); //dbclick = mousedown, mouseup - Repeat quickly
 canvas.addEventListener("mousemove", onMove);
 canvas.addEventListener("mousedown", startPainting);
@@ -131,3 +159,5 @@ clearBtn.addEventListener("click", onClearClick);
 eraserBtn.addEventListener("click", onEraserClick);
 fileInput.addEventListener("change", onFileChange);
 saveBtn.addEventListener("click", onSaveClick);
+fontSelect.addEventListener("change", onFontSelector);
+fontmodeBtn.addEventListener("click", onFontModeChange)
