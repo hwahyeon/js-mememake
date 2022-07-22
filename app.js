@@ -1,3 +1,4 @@
+const pencilBtn = document.getElementById("pencil-btn");
 const fontSize = document.getElementById("fontsize");
 const fontmodeBtn = document.getElementById("fontmode-btn")
 const fontSelect = document.getElementById("sel-font");
@@ -27,12 +28,30 @@ ctx.font = `${fontSize.value}px ${fontSelect.options[fontSelect.selectedIndex].v
 let isPainting = false;
 let isFilling = false;
 let fontFilling = false;
+let isPenciling = true;
+
+function onPencilChage(){
+    if (isPenciling){
+        isPenciling = false;
+        pencilBtn.innerText = "Snare"
+    } else {
+        isPenciling = true;
+        pencilBtn.innerText = "Pencil"
+    }
+}
 
 function onMove(event){
     if (isPainting){
-        ctx.lineTo(event.offsetX, event.offsetY);
-        ctx.stroke();
-        return;
+        if (isPenciling){
+            ctx.lineTo(event.offsetX, event.offsetY);
+            ctx.stroke();
+            return;
+    
+        } else {
+            ctx.lineTo(event.offsetX, event.offsetY);
+            ctx.fill();
+            return;
+        }
     }
     ctx.moveTo(event.offsetX, event.offsetY);
 }
@@ -105,7 +124,6 @@ function onFontSelector(){
     ctx.font = `${fontSize.value}px ${fontSelect.options[fontSelect.selectedIndex].value}`;
 }
 
-
 function onDoubleClick(event){
     ctx.save(); // save current state color, style everything
     const text = textInput.value;
@@ -132,7 +150,6 @@ function onFontModeChange() {
     }
 }
 
-
 function onSaveClick() {
     const url = canvas.toDataURL();
     const a = document.createElement("a")
@@ -140,7 +157,6 @@ function onSaveClick() {
     a.download = "myDrawing.png"
     a.click();
 }
-
 
 fontSize.addEventListener("change", onFontSelector)
 canvas.addEventListener("dblclick", onDoubleClick); //dbclick = mousedown, mouseup - Repeat quickly
@@ -160,4 +176,5 @@ eraserBtn.addEventListener("click", onEraserClick);
 fileInput.addEventListener("change", onFileChange);
 saveBtn.addEventListener("click", onSaveClick);
 fontSelect.addEventListener("change", onFontSelector);
-fontmodeBtn.addEventListener("click", onFontModeChange)
+fontmodeBtn.addEventListener("click", onFontModeChange);
+pencilBtn.addEventListener("click", onPencilChage);

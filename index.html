@@ -68,6 +68,7 @@
         </div>
         <canvas></canvas>
         <div class="btns">
+            <button id="pencil-btn">Pencil</button>
             <input
                 id="line-width"
                 type="range"
@@ -85,6 +86,7 @@
                 Add Photo
                 <input type="file" accept="image/*" id="file" />
             </label>
+
             <input
                 type="text"
                 placeholder="Write and then double click"
@@ -95,7 +97,7 @@
                 type="range"
                 min="20"
                 max="100"
-                value="45"
+                value="60"
                 step="5"
             />
             <select name="fonts" id="sel-font">
@@ -106,6 +108,7 @@
                 <option value="Malgun Gothic">맑은 고딕</option>
             </select>
             <button id="fontmode-btn">Fill</button>
+
             <button id="save">Save</button>
         </div>
         <script src="app.js"></script>
