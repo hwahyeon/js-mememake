@@ -50,9 +50,9 @@ function onFestival() {
         pencilBtn.className = "btns";
         isFestival = false;
     } else {
-        isFestival = true;
         festivalBtn.innerText = "Festival"
         pencilBtn.className = "btns-not";
+        isFestival = true;
     }
 }
 
@@ -78,10 +78,10 @@ function onMove(event){
             return;
         }
     } else if (isFestival){
-        //pencil / Snare 무효화 (CSS)
         const colors = COLOR_LIST[Math.floor(Math.random() * COLOR_LIST.length)];
         ctx.moveTo(400, 400);
         ctx.strokeStyle = colors;
+        ctx.fillStyle = colors;
         color.value = colors
         ctx.lineTo(event.offsetX, event.offsetY);
         ctx.stroke();
