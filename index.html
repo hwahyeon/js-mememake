@@ -68,6 +68,7 @@
         </div>
         <canvas></canvas>
         <div class="btns">
+            <button id="festival">Canvas</button>
             <button id="pencil-btn">Pencil</button>
             <input
                 id="line-width"
@@ -78,27 +79,19 @@
                 step="0.1"
             />
 
-            <button id="mode-btn">Fill</button>
+            <button id="mode-btn">Draw mode</button>
             <button id="clear-btn">Clear</button>
-            <button id="eraser-btn">Erase</button>
+            <button id="eraser-btn">Eraser</button>
             <label for="file">
                 <!--label의 for와 input의 id가 같으면, input을 클릭한 것과 같은 효과를 준다 / id가 동일하다면, input을 반드시 label태그 안에 넣을 필요는 없다.-->
-                Add Photo
+                Add Background
                 <input type="file" accept="image/*" id="file" />
             </label>
 
             <input
                 type="text"
-                placeholder="Write and then double click"
+                placeholder="Write then double click"
                 id="text"
-            />
-            <input
-                id="fontsize"
-                type="range"
-                min="20"
-                max="100"
-                value="60"
-                step="5"
             />
             <select name="fonts" id="sel-font">
                 <option value="sans-serif">sans-serif</option>
@@ -107,7 +100,15 @@
                 <option value="fantasy">fantasy</option>
                 <option value="Malgun Gothic">맑은 고딕</option>
             </select>
-            <button id="fontmode-btn">Fill</button>
+            <input
+                id="fontsize"
+                type="range"
+                min="20"
+                max="100"
+                value="60"
+                step="5"
+            />
+            <button id="fontmode-btn">Normal Font</button>
 
             <button id="save">Save</button>
         </div>

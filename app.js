@@ -1,3 +1,4 @@
+const festivalBtn = document.getElementById("festival");
 const pencilBtn = document.getElementById("pencil-btn");
 const fontSize = document.getElementById("fontsize");
 const fontmodeBtn = document.getElementById("fontmode-btn")
@@ -16,6 +17,18 @@ const lineWidth = document.getElementById("line-width");
 const canvas = document.querySelector("canvas");
 const ctx = canvas.getContext("2d");
 
+const COLOR_LIST = [
+    "#ff3838",
+    "#ffb8b8",
+    "#c56cf0",
+    "#ff9f1a",
+    "#fff200",
+    "#32ff7e",
+    "#7efff5",
+    "#18dcff",
+    "#7d5fff",
+  ];
+
 const CANVAS_WIDTH = 800;
 const CANVAS_HEIGHT = 800;
 
@@ -27,8 +40,21 @@ ctx.font = `${fontSize.value}px ${fontSelect.options[fontSelect.selectedIndex].v
 
 let isPainting = false;
 let isFilling = false;
-let fontFilling = false;
+let fontFilling = true;
 let isPenciling = true;
+let isFestival = false;
+
+function onFestival() {
+    if (isFestival){
+        festivalBtn.innerText = "Canvas"
+        pencilBtn.className = "btns";
+        isFestival = false;
+    } else {
+        isFestival = true;
+        festivalBtn.innerText = "Festival"
+        pencilBtn.className = "btns-not";
+    }
+}
 
 function onPencilChage(){
     if (isPenciling){
@@ -41,17 +67,25 @@ function onPencilChage(){
 }
 
 function onMove(event){
-    if (isPainting){
+    if (isPainting && !isFestival){
         if (isPenciling){
             ctx.lineTo(event.offsetX, event.offsetY);
             ctx.stroke();
             return;
-    
         } else {
             ctx.lineTo(event.offsetX, event.offsetY);
             ctx.fill();
             return;
         }
+    } else if (isFestival){
+        //pencil / Snare 무효화 (CSS)
+        const colors = COLOR_LIST[Math.floor(Math.random() * COLOR_LIST.length)];
+        ctx.moveTo(400, 400);
+        ctx.strokeStyle = colors;
+        color.value = colors
+        ctx.lineTo(event.offsetX, event.offsetY);
+        ctx.stroke();
+        ctx.beginPath();
     }
     ctx.moveTo(event.offsetX, event.offsetY);
 }
@@ -85,10 +119,10 @@ function onColorClick(event){
 function onModeClick(){
     if (isFilling){
         isFilling = false
-        modeBtn.innerText = "Fill"
+        modeBtn.innerText = "Draw mode"
     } else {
         isFilling = true
-        modeBtn.innerText = "Draw"
+        modeBtn.innerText = "Fill Canvas"
     }
 }
 
@@ -143,10 +177,10 @@ function onDoubleClick(event){
 function onFontModeChange() {
     if (fontFilling){
         fontFilling = false
-        fontmodeBtn.innerText = "Fill"
+        fontmodeBtn.innerText = "Outline Font"
     } else {
         fontFilling = true
-        fontmodeBtn.innerText = "Draw"
+        fontmodeBtn.innerText = "Normal Font"
     }
 }
 
@@ -178,3 +212,4 @@ saveBtn.addEventListener("click", onSaveClick);
 fontSelect.addEventListener("change", onFontSelector);
 fontmodeBtn.addEventListener("click", onFontModeChange);
 pencilBtn.addEventListener("click", onPencilChage);
+festivalBtn.addEventListener("click", onFestival);
