@@ -1,3 +1,36 @@
 # Meme Maker with JS
 
-### [start](https://hwahyeon.github.io/mememakerjs/)
+The Painting Board made with VanillaJS.
+
+- JavaScript
+- Canvas
+
+### **[Start](https://hwahyeon.github.io/mememakerjs/)**    
+
+
+
+## Select a Color
+
+## Canvas Mode
+
+## Pencil / Snare
+
+## Draw / Fill
+
+## Clear
+
+## Eraser
+
+## Add Background
+
+## Text Options
+
+### Font
+
+### Size
+
+### Outline
+
+## Save
+
+## Festival
