@@ -27,7 +27,7 @@ const COLOR_LIST = [
     "#7efff5",
     "#18dcff",
     "#7d5fff",
-  ];
+    ];
 
 const CANVAS_WIDTH = 800;
 const CANVAS_HEIGHT = 800;
@@ -117,6 +117,10 @@ function onColorClick(event){
 }
 
 function onModeClick(){
+    if (isFestival){
+        onFestival()
+    }
+    
     if (isFilling){
         isFilling = false
         modeBtn.innerText = "Draw mode"
@@ -138,9 +142,12 @@ function onClearClick(){
 }
 
 function onEraserClick(){
+    if (isFestival){
+        onFestival()
+    }
     ctx.strokeStyle = "white";
     isFilling = false;
-    modeBtn.innerText = "Fill";
+    modeBtn.innerText = "Draw mode";
 }
 
 function onFileChange(event){
