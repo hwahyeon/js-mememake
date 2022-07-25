@@ -35,7 +35,7 @@ You can fill the canvas with any color you like.
 You can erase everything on the canvas. Click the `Clear` button on the right
 
 
-## Eraser
+### Eraser
 <p align="center"><img src="https://blog.kakaocdn.net/dn/tv5JH/btrIaPQyOl5/OCOXVe1rByONPBLRf0kUN1/img.gif" width="600"></p>
 </br>
 
@@ -44,9 +44,15 @@ You can erase everything on the canvas. Click the `Clear` button on the right
 </br>
 
 ## Text
-
+If you want to enter some text on the canvas, type your text in the blank box on the right side and then double-click on the canvas.
 <p align="center"><img src="https://blog.kakaocdn.net/dn/PPCVR/btrH75lWtDn/zYrSagVFLGlokvnmVmYUK1/img.gif" width="600"></p>
+
 ### Font
+Four fonts are provided.
+* sans-serif
+* cursive
+* fantasy
+* 맑은 고딕
 
 ### Size
 
