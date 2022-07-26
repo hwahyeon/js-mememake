@@ -63,5 +63,4 @@ You can save your work by clicking the **`Save`** button.
 
 ## Festival
 Pencil, Snare mode is not available in this mode.  
-<p align="center"><img src="https://blog.kakaocdn.net/dn/qdkus/btrH7Q9tgnG/Dhqp4rfk7Hk6gom2QLfxc1/img.gif" width="600"></p>
 **Enjoy!**
