@@ -44,7 +44,7 @@ You can erase everything on the canvas. Click the `Clear` button on the right
 </br>
 
 ## Text
-If you want to enter some text on the canvas, type your text in the blank box on the right side and then double-click on the canvas.
+If you want to put some text on the canvas, type your text in the blank box on the right side and then double-click on the canvas.
 <p align="center"><img src="https://blog.kakaocdn.net/dn/PPCVR/btrH75lWtDn/zYrSagVFLGlokvnmVmYUK1/img.gif" width="600"></p>
 
 ### Font
