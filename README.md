@@ -15,7 +15,7 @@ The Painting Board made with VanillaJS.
 
 
 ## Canvas Mode
-Two main modes are provided. `Canvas` mode is the default. For [the other](./main#festival), see below.
+Two main modes are provided. `Canvas` mode is the default. For [the other](./#festival), see below.
 
 ### Pencil Mode
 You can set the thickness and color of the `Pencil`.
