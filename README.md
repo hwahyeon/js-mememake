@@ -5,7 +5,7 @@ The Painting Board made with VanillaJS.
 - JavaScript
 - Canvas
 
-### **[Start](https://hwahyeon.github.io/mememakerjs/)**    
+### **[Start](https://hwahyeon.github.io/js-mememake/)**    
 
 
 
